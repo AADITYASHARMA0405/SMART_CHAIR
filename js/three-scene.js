@@ -504,6 +504,7 @@ export function initThreeScene() {
   const ring = new THREE.Mesh(ringGeo, ringMat);
   ring.rotation.x = Math.PI / 2.3;
   ring.position.y = 2;
+  ring.position.x = 1.0; // Shifted right to match chair
   scene.add(ring);
 
   // 3 orbiting dots on the ring
@@ -533,13 +534,13 @@ export function initThreeScene() {
   const particles = new THREE.Points(particleGeo, particleMat);
   scene.add(particles);
 
-  // === Ground shadow disc ===
   const shadowDisc = new THREE.Mesh(
     new THREE.CircleGeometry(1.2, 32),
     new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.04 })
   );
   shadowDisc.rotation.x = -Math.PI / 2;
   shadowDisc.position.y = -0.05;
+  shadowDisc.position.x = 1.0; // Shifted right to match chair
   scene.add(shadowDisc);
 
   // === Mouse tracking ===
@@ -608,7 +609,7 @@ export function initThreeScene() {
       d.angle += 0.004 * d.speed;
       const tilt = Math.PI / 2.3;
       d.mesh.position.set(
-        Math.cos(d.angle) * 2.0,
+        1.0 + Math.cos(d.angle) * 2.0, // Shifted right 1.0 to match chair
         2 + Math.sin(d.angle) * 2.0 * Math.cos(tilt),
         Math.sin(d.angle) * 2.0 * Math.sin(tilt)
       );
