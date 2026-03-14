@@ -91,6 +91,7 @@ export function initThreeScene() {
 
   // === Build Chair ===
   const chairGroup = new THREE.Group();
+  chairGroup.position.x = 1.0; // Shift the entire chair assembly to the right
 
   // Seat pan
   const seat = new THREE.Mesh(new RoundedBoxGeometry(1.5, 0.1, 1.4, 4, 0.02), darkMat);
