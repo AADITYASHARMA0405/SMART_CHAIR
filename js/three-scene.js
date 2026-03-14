@@ -8,9 +8,9 @@ export function initThreeScene() {
   const scene = new THREE.Scene();
 
   const aspect = canvas.clientWidth / canvas.clientHeight || 1.5;
-  const camera = new THREE.PerspectiveCamera(38, aspect, 0.1, 1000);
-  camera.position.set(4.5, 4.2, 6.8);
-  camera.lookAt(0, 1.8, 0);
+  const camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1000); // Widened FOV from 38 to 45
+  camera.position.set(5.5, 4.2, 7.5); // Moved camera back and slightly right
+  camera.lookAt(0.5, 1.8, 0); // Adjusted focus point slightly right to track the chair
 
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
   renderer.setSize(canvas.clientWidth, canvas.clientHeight);
