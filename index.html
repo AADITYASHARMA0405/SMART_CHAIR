@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartChair – Posture Monitoring & Fatigue Analysis</title>
+  <meta name="description" content="AI-powered smart chair for real-time posture monitoring, fatigue analysis, and ergonomic health insights. Aligned with UN SDG 3 & SDG 8." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🪑</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-icon">🪑</span>
+        <span class="logo-text">Smart<span class="logo-highlight">Chair</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#analytics">Analytics</a></li>
+        <li><a href="#alerts">Alerts</a></li>
+        <li><a href="#impact">Impact</a></li>
+      </ul>
+      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
+      <h1 class="hero-title animate-on-scroll">
+        Your Posture.<br />
+        <span class="gradient-text">Monitored. Analyzed. Improved.</span>
+      </h1>
+      <p class="hero-subtitle animate-on-scroll">
+        An intelligent ergonomic chair system that uses real-time sensor data and machine learning
+        to monitor your posture, predict fatigue, and guide you toward healthier sitting habits.
+      </p>
+      <div class="hero-stats animate-on-scroll">
+        <div class="stat-item">
+          <span class="stat-number" data-target="92">0</span><span class="stat-suffix">%</span>
+          <span class="stat-label">Classification Accuracy</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="1">0</span><span class="stat-suffix">s</span>
+          <span class="stat-label">Sensor Latency</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="6">0</span>
+          <span class="stat-label">Posture Classes</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="24">0</span><span class="stat-suffix">/7</span>
+          <span class="stat-label">Monitoring</span>
+        </div>
+      </div>
+      <div class="hero-cta animate-on-scroll">
+        <a href="#dashboard" class="btn btn-primary">
+          <span>View Live Dashboard</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#features" class="btn btn-secondary">Explore Features</a>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ===== POSTURE IMPORTANCE ===== -->
+  <section id="posture" class="section posture-importance" style="background: var(--bg-alt);">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-tag">Why It Matters</span>
+        <h2 class="section-title">The Hidden Cost of <span style="color: var(--text);">Poor Posture</span></h2>
+        <p class="section-subtitle">Sitting incorrectly doesn't just cause temporary discomfort—it has lasting effects on your health, mood, and productivity.</p>
+      </div>
+      <div class="side-effects-grid">
+        <div class="side-effect-card animate-on-scroll" data-delay="0">
+          <div class="side-effect-icon">🦴</div>
+          <h3 style="color: var(--text);">Musculoskeletal Pain</h3>
+          <p>Chronic slouching puts excessive strain on your spinal ligaments and muscles, leading to persistent neck, shoulder, and lower back pain. Over time, this can accelerate joint degeneration.</p>
+        </div>
+        <div class="side-effect-card animate-on-scroll" data-delay="0.1">
+          <div class="side-effect-icon">🫁</div>
+          <h3 style="color: var(--text);">Reduced Lung Capacity</h3>
+          <p>A hunched posture compresses your abdominal organs and restricts your diaphragm. This can reduce lung capacity by up to 30%, lowering oxygen intake and causing premature fatigue.</p>
+        </div>
+        <div class="side-effect-card animate-on-scroll" data-delay="0.2">
+          <div class="side-effect-icon">🧠</div>
+          <h3 style="color: var(--text);">Mood & Productivity Decline</h3>
+          <p>Studies show that upright posture is linked to higher energy levels and assertiveness, while slumped posture increases the risk of depressive feelings, stress, and poor concentration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section id="features" class="section features">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-tag">Core Capabilities</span>
+        <h2 class="section-title">Intelligent Features for <span class="gradient-text">Healthier Living</span></h2>
+        <p class="section-subtitle">Powered by ESP32 sensors and advanced ML models to transform how you sit, work, and live.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card animate-on-scroll" data-delay="0">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" stroke-dasharray="2 4"/>
+              <path d="M12 7v5l3 3" stroke-width="2" stroke="var(--accent)"/>
+              <path d="M12 2v2"/><path d="M12 20v2"/><path d="M22 12h-2"/><path d="M4 12H2"/>
+            </svg>
+          </div>
+          <h3>Real-Time Monitoring</h3>
+          <p>Continuous posture tracking with less than 1 second latency using pressure sensors and accelerometers.</p>
+        </div>
+        <div class="feature-card animate-on-scroll" data-delay="0.1">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" fill="var(--accent-light)"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="var(--accent)" stroke-width="1.5"/>
+              <line x1="12" y1="22.08" x2="12" y2="12" stroke="var(--accent)" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3>AI Posture Classification</h3>
+          <p>92% accurate ML model classifying 6 posture types — Good, Slouching, Leaning Left/Right, Forward, Reclined.</p>
+        </div>
+        <div class="feature-card animate-on-scroll" data-delay="0.2">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="none" stroke="var(--accent)" stroke-width="2"/>
+              <circle cx="12" cy="12" r="10" stroke-opacity="0.3"/>
+            </svg>
+          </div>
+          <h3>Fatigue Prediction</h3>
+          <p>Predictive analytics detect fatigue patterns before they strike, suggesting optimal break times.</p>
+        </div>
+        <div class="feature-card animate-on-scroll" data-delay="0.3">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" fill="var(--accent-light)"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="var(--accent)" stroke-width="1.5"/>
+              <path d="M2 8h2"/><path d="M20 8h2"/>
+            </svg>
+          </div>
+          <h3>Haptic Alerts</h3>
+          <p>Vibration motors gently nudge you when posture drops below threshold — no screen needed.</p>
+        </div>
+        <div class="feature-card animate-on-scroll" data-delay="0.4">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.8 4.6a5.5 5.5 0 0 0-7.7 0l-1.1 1.1-1.1-1.1a5.5 5.5 0 0 0-7.7 7.7l1.1 1.1 7.7 7.7 7.7-7.7 1.1-1.1a5.5 5.5 0 0 0 0-7.7z" fill="var(--accent-light)"/>
+              <path d="M12 21.2l-1.1-1.1" stroke="var(--accent)" stroke-width="1.5"/>
+              <path d="M8 7a2 2 0 0 1 2 2"/>
+            </svg>
+          </div>
+          <h3>Health Sync</h3>
+          <p>Integrates with Apple Health, Google Fit, and wearable devices for a holistic health overview.</p>
+        </div>
+        <div class="feature-card animate-on-scroll" data-delay="0.5">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <line x1="3" y1="9" x2="21" y2="9" stroke="var(--accent)" stroke-width="1.5"/>
+              <line x1="9" y1="21" x2="9" y2="9"/>
+              <circle cx="15" cy="15" r="2" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
+            </svg>
+          </div>
+          <h3>Corporate Dashboard</h3>
+          <p>Enterprise SaaS panel for HR teams to monitor aggregate employee ergonomic wellness data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DASHBOARD ===== -->
+  <section id="dashboard" class="section dashboard">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-tag">Live Monitor</span>
+        <h2 class="section-title">Real-Time <span class="gradient-text">Posture Dashboard</span></h2>
+        <p class="section-subtitle">Simulated live sensor feed showcasing the SmartChair monitoring interface.</p>
+        <div style="margin-top: 20px;">
+          <button id="toggle-empty-chair" class="btn btn-secondary" style="font-size: 0.85rem; padding: 8px 16px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; display: inline-block; vertical-align: middle;"><path d="M7 18v-6a5 5 0 0 1 10 0v6"/><rect x="5" y="18" width="14" height="2" rx="1"/><path d="M12 7V3"/></svg>
+            Simulate Empty Chair
+          </button>
+        </div>
+      </div>
+      <div class="dashboard-grid">
+        <!-- Posture Score Gauge -->
+        <div class="dash-card dash-card-large animate-on-scroll">
+          <div class="dash-card-header">
+            <h3>Posture Score</h3>
+            <span class="live-badge"><span class="live-dot"></span> Live</span>
+          </div>
+          <div class="gauge-container">
+            <svg class="gauge-svg" viewBox="0 0 200 120">
+              <path d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="12" stroke-linecap="round"/>
+              <path id="gauge-fill" d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="url(#gaugeGradient)" stroke-width="12" stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251"/>
+              <defs>
+                <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#eeeeee"/>
+                  <stop offset="50%" stop-color="#999999"/>
+                  <stop offset="100%" stop-color="#111111"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="gauge-value">
+              <span id="posture-score">0</span>
+              <span class="gauge-label">/ 100</span>
+            </div>
+          </div>
+          <div id="posture-status" class="posture-status good">Good Posture</div>
+        </div>
+
+        <!-- Spine Alignment -->
+        <div class="dash-card animate-on-scroll">
+          <div class="dash-card-header">
+            <h3>Spine Alignment</h3>
+          </div>
+          <div class="spine-container">
+            <div class="spine-visual">
+              <div class="spine-segment" id="spine-cervical" data-region="Cervical"><span></span></div>
+              <div class="spine-segment" id="spine-thoracic" data-region="Thoracic"><span></span></div>
+              <div class="spine-segment" id="spine-lumbar" data-region="Lumbar"><span></span></div>
+              <div class="spine-segment" id="spine-sacral" data-region="Sacral"><span></span></div>
+            </div>
+            <div class="spine-labels">
+              <div class="spine-label"><span class="dot good"></span> Aligned</div>
+              <div class="spine-label"><span class="dot warning"></span> Slight Stress</div>
+              <div class="spine-label"><span class="dot danger"></span> Misaligned</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fatigue Meter -->
+        <div class="dash-card animate-on-scroll">
+          <div class="dash-card-header">
+            <h3>Fatigue Level</h3>
+          </div>
+          <div class="fatigue-meter">
+            <div class="fatigue-bar-bg">
+              <div id="fatigue-bar" class="fatigue-bar" style="width: 0%;"></div>
+            </div>
+            <div class="fatigue-info">
+              <span id="fatigue-value">0%</span>
+              <span id="fatigue-label" class="fatigue-label low">Low</span>
+            </div>
+            <p class="fatigue-tip" id="fatigue-tip">Keep it up! You're doing great.</p>
+          </div>
+        </div>
+
+        <!-- Session Timer -->
+        <div class="dash-card animate-on-scroll">
+          <div class="dash-card-header">
+            <h3>Session Duration</h3>
+          </div>
+          <div class="session-timer">
+            <div class="timer-display">
+              <span id="timer-hours">00</span>:<span id="timer-minutes">00</span>:<span id="timer-seconds">00</span>
+            </div>
+            <p class="timer-label">Continuous Sitting Time</p>
+            <div class="timer-warning" id="timer-warning" style="display:none;">
+              ⚠️ Consider taking a break!
+            </div>
+          </div>
+        </div>
+
+        <!-- Pressure Heatmap -->
+        <div class="dash-card animate-on-scroll">
+          <div class="dash-card-header">
+            <h3>Seat Pressure Map</h3>
+          </div>
+          <div class="pressure-grid" id="pressure-grid"></div>
+        </div>
+
+        <!-- Current Posture Type -->
+        <div class="dash-card animate-on-scroll">
+          <div class="dash-card-header">
+            <h3>Detected Posture</h3>
+          </div>
+          <div class="posture-type-display">
+            <div class="posture-icon" id="posture-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><path d="M12 8v8"/><path d="m7 22 2-7 2-3h2l2 3 2 7"/><path d="M10 11H8a2 2 0 0 0-2 2v2"/><path d="M14 11h2a2 2 0 0 1 2 2v2"/></svg>
+            </div>
+            <span class="posture-type-name" id="posture-type-name">Upright</span>
+            <div class="posture-types-mini">
+              <span class="ptype active" data-type="upright">Upright</span>
+              <span class="ptype" data-type="slouch">Slouch</span>
+              <span class="ptype" data-type="lean-l">Lean L</span>
+              <span class="ptype" data-type="lean-r">Lean R</span>
+              <span class="ptype" data-type="forward">Forward</span>
+              <span class="ptype" data-type="reclined">Reclined</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ANALYTICS ===== -->
+  <section id="analytics" class="section analytics">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-tag">Insights & Trends</span>
+        <h2 class="section-title">Your Posture <span class="gradient-text">Analytics</span></h2>
+        <p class="section-subtitle">7-day historical data tracking your posture health and activity patterns.</p>
+      </div>
+      <div class="charts-grid">
+        <div class="chart-card animate-on-scroll">
+          <h3>Posture Score – 7 Day Trend</h3>
+          <canvas id="chart-posture"></canvas>
+        </div>
+        <div class="chart-card animate-on-scroll">
+          <h3>Fatigue Levels – Hourly Breakdown</h3>
+          <canvas id="chart-fatigue"></canvas>
+        </div>
+        <div class="chart-card animate-on-scroll">
+          <h3>Activity Distribution</h3>
+          <canvas id="chart-activity"></canvas>
+        </div>
+        <div class="chart-card animate-on-scroll">
+          <h3>Posture Classification Breakdown</h3>
+          <canvas id="chart-posture-types"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ALERTS ===== -->
+  <section id="alerts" class="section alerts">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-tag">Smart Notifications</span>
+        <h2 class="section-title">Alerts & <span class="gradient-text">Recommendations</span></h2>
+        <p class="section-subtitle">Proactive health guidance powered by real-time analysis.</p>
+      </div>
+      <div class="alerts-grid">
+        <div class="alert-card alert-warning animate-on-scroll">
+          <div class="alert-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div class="alert-content">
+            <h4>Posture Correction Needed</h4>
+            <p>You've been slouching for 12 minutes. Sit back, align your spine, and adjust your lumbar support.</p>
+            <span class="alert-time">2 min ago</span>
+          </div>
+        </div>
+        <div class="alert-card alert-info animate-on-scroll">
+          <div class="alert-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+          </div>
+          <div class="alert-content">
+            <h4>Stretch Break Reminder</h4>
+            <p>You've been sitting for 45 minutes. Try these: neck rolls, shoulder shrugs, and standing hamstring stretch.</p>
+            <span class="alert-time">5 min ago</span>
+          </div>
+        </div>
+        <div class="alert-card alert-success animate-on-scroll">
+          <div class="alert-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          </div>
+          <div class="alert-content">
+            <h4>Great Posture Streak!</h4>
+            <p>You maintained good posture for 30 consecutive minutes! That's a new personal best today.</p>
+            <span class="alert-time">15 min ago</span>
+          </div>
+        </div>
+        <div class="alert-card alert-danger animate-on-scroll">
+          <div class="alert-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="alert-content">
+            <h4>Fatigue Alert – High Level</h4>
+            <p>Fatigue level at 78%. Strongly recommend a 10-minute walk or standing break immediately.</p>
+            <span class="alert-time">1 min ago</span>
+          </div>
+        </div>
+        <div class="alert-card alert-info animate-on-scroll">
+          <div class="alert-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A5 5 0 0 0 8 8c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/></svg>
+          </div>
+          <div class="alert-content">
+            <h4>Ergonomic Tip</h4>
+            <p>Position your monitor at eye level and keep your feet flat on the floor for optimal spinal alignment.</p>
+            <span class="alert-time">20 min ago</span>
+          </div>
+        </div>
+        <div class="alert-card alert-warning animate-on-scroll">
+          <div class="alert-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <div class="alert-content">
+            <h4>Haptic Feedback Triggered</h4>
+            <p>Chair vibration motor activated — gentle reminder to correct your left-lean posture.</p>
+            <span class="alert-time">Just now</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ERGONOMIC WISDOM ===== -->
+  <section id="wisdom" class="section wisdom" style="background: var(--bg-alt);">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-tag">Health Guidance</span>
+        <h2 class="section-title">Ergonomic <span class="gradient-text">Wisdom</span></h2>
+        <p class="section-subtitle">Actionable insights derived from your posture data to improve long-term spinal health.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card animate-on-scroll" data-delay="0">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2a2 2 0 1 0-2 2h4a2 2 0 1 0-2-2"/><path d="M7 22a2 2 0 1 0-2-2h4a2 2 0 1 0-2-2"/><path d="M15 2a2 2 0 1 1 2 2h-4a2 2 0 1 1 2-2"/><path d="M15 22a2 2 0 1 1 2-2h-4a2 2 0 1 1 2-2"/><path d="M12 4v16"/></svg>
+          </div>
+          <h3>Spinal Decompression</h3>
+          <p>Perform 30-second standing stretches every hour to relieve vertical pressure on your intervertebral discs.</p>
+        </div>
+        <div class="feature-card animate-on-scroll" data-delay="0.1">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-2)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3>Lumbar Support Lock</h3>
+          <p>Ensure your lumbar support is positioned exactly at the curve of your lower back to maintain natural S-curvature.</p>
+        </div>
+        <div class="feature-card animate-on-scroll" data-delay="0.2">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          </div>
+          <h3>Visual Fatigue (20-20-20)</h3>
+          <p>Every 20 minutes, look at something 20 feet away for 20 seconds to reduce digital eye strain and neck stiffness.</p>
+        </div>
+        <div class="feature-card animate-on-scroll" data-delay="0.3">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-warm)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
+          </div>
+          <h3>Circulatory Motion</h3>
+          <p>Keep your feet flat and move your ankles occasionally to prevent blood pooling and maintain optimal circulation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SDG IMPACT ===== -->
+  <section id="impact" class="section impact">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-tag">Global Impact</span>
+        <h2 class="section-title">Aligned with <span class="gradient-text">UN Sustainable Development Goals</span></h2>
+        <p class="section-subtitle">SmartChair contributes to a healthier, more productive world through ergonomic innovation.</p>
+      </div>
+      <div class="sdg-grid">
+        <div class="sdg-card animate-on-scroll">
+          <div class="sdg-badge sdg-3">SDG 3</div>
+          <h3>Good Health & Well-being</h3>
+          <p>Prevents musculoskeletal disorders, reduces chronic back pain risk, and promotes active sitting habits among desk workers and students globally.</p>
+          <div class="sdg-stats">
+            <div class="sdg-stat">
+              <span class="stat-number" data-target="1700000000">0</span>
+              <span class="stat-label">People affected by MSDs worldwide</span>
+            </div>
+            <div class="sdg-stat">
+              <span class="stat-number" data-target="60">0</span><span class="stat-suffix">%</span>
+              <span class="stat-label">Reduction in posture-related complaints</span>
+            </div>
+          </div>
+        </div>
+        <div class="sdg-card animate-on-scroll">
+          <div class="sdg-badge sdg-8">SDG 8</div>
+          <h3>Decent Work & Economic Growth</h3>
+          <p>Promotes safe and healthy working environments, reduces absenteeism, and boosts productivity through ergonomic health monitoring.</p>
+          <div class="sdg-stats">
+            <div class="sdg-stat">
+              <span class="stat-number" data-target="30">0</span><span class="stat-suffix">%</span>
+              <span class="stat-label">Increase in workplace productivity</span>
+            </div>
+            <div class="sdg-stat">
+              <span class="stat-number" data-target="45">0</span><span class="stat-suffix">%</span>
+              <span class="stat-label">Reduction in work-related injuries</span>
+            </div>
+          </div>
+        </div>
+        <div class="sdg-card animate-on-scroll">
+          <div class="sdg-badge sdg-4">SDG 4</div>
+          <h3>Quality Education</h3>
+          <p>Equips students and educational institutions with smart furniture to foster better focus, reduce physical strain during long study hours, and promote lifelong healthy habits.</p>
+          <div class="sdg-stats">
+            <div class="sdg-stat">
+              <span class="stat-number" data-target="80">0</span><span class="stat-suffix">%</span>
+              <span class="stat-label">Schools report better student focus</span>
+            </div>
+            <div class="sdg-stat">
+              <span class="stat-number" data-target="2">0</span><span class="stat-suffix">M+</span>
+              <span class="stat-label">Students benefiting globally</span>
+            </div>
+          </div>
+        </div>
+        <div class="sdg-card animate-on-scroll">
+          <div class="sdg-badge sdg-9">SDG 9</div>
+          <h3>Industry, Innovation & Infrastructure</h3>
+          <p>Pioneering the future of IoT and Machine Learning integrated directly into everyday furniture, setting new standards for intelligent, health-conscious infrastructure.</p>
+          <div class="sdg-stats">
+            <div class="sdg-stat">
+              <span class="stat-number" data-target="15">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Patents pending for smart sensors</span>
+            </div>
+            <div class="sdg-stat">
+              <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
+              <span class="stat-label">Scalable cloud ML infrastructure</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="impact-numbers animate-on-scroll">
+        <div class="impact-stat">
+          <span class="impact-number" data-target="10000">0</span><span class="stat-suffix">+</span>
+          <span class="impact-label">Active Users</span>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-number" data-target="50000">0</span><span class="stat-suffix">+</span>
+          <span class="impact-label">Posture Corrections Made</span>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-number" data-target="85">0</span><span class="stat-suffix">%</span>
+          <span class="impact-label">Users Report Less Back Pain</span>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-number" data-target="120">0</span><span class="stat-suffix">+</span>
+          <span class="impact-label">Enterprise Deployments</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-icon">🪑</span>
+          <span class="logo-text">Smart<span class="logo-highlight">Chair</span></span>
+          <p>AI-powered ergonomic health monitoring — because your posture matters.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Product</h4>
+            <a href="#features">Features</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#analytics">Analytics</a>
+          </div>
+          <div class="footer-col">
+            <h4>Impact</h4>
+            <a href="#impact">SDG Goals</a>
+            <a href="#alerts">Health Alerts</a>
+          </div>
+          <div class="footer-col">
+            <h4>Tech Stack</h4>
+            <a href="#">ESP32</a>
+            <a href="#">Python / Streamlit</a>
+            <a href="#">TensorFlow Lite</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year"></span> SmartChair. Built for better health.</p>
+        <p class="footer-sdg">Aligned with UN SDG 3 & SDG 8</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
