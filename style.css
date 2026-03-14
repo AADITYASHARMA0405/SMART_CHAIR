@@ -130,7 +130,7 @@ a { text-decoration: none; color: inherit; }
 }
 .hero-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
   font-weight: 800; line-height: 1.1; margin-bottom: 24px;
   letter-spacing: -0.04em; color: var(--text);
 }
@@ -149,7 +149,7 @@ a { text-decoration: none; color: inherit; }
 }
 .stat-item { text-align: left; }
 .stat-number {
-  font-family: var(--font-heading); font-size: 2.2rem; font-weight: 900;
+  font-family: var(--font-heading); font-size: 1.8rem; font-weight: 900;
   color: var(--text); display: inline;
 }
 .stat-suffix {
