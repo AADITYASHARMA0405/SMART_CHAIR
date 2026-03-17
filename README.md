@@ -1,5 +1,7 @@
 # SmartChair: Posture Monitoring & Fatigue Analysis Platform
 
+**Live Demo: [smart-chair-zeta.vercel.app](https://smart-chair-zeta.vercel.app/)**
+
 ## Overview
 SmartChair is an advanced, AI-powered ergonomic health monitoring system. It leverages real-time sensor data and machine learning to analyze sitting posture, predict user fatigue, and provide actionable health insights. The platform is designed to combat the negative effects of prolonged sitting, such as musculoskeletal pain and reduced circulation, by actively guiding users toward healthier habits.
 
